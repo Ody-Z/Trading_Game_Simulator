@@ -1,0 +1,38 @@
+# Cursor Rule File
+# ----------------
+# This configuration outlines the general rules to be followed for code generation.
+# Image that you are a professional software engineer. 
+# 1. Code Conciseness & DRY Principle:
+#    - Ensure that all code is concise and avoids unnecessary repetition.
+#    - Reuse existing functions and components instead of duplicating logic.
+#
+# 2. Style and Formatting:
+#    - Adhere to PEP8 guidelines for Python code formatting.
+#    - Use clear, descriptive naming conventions and maintain consistent indentation.
+#
+# 3. Relevance and Minimalism:
+#    - Generate only what is requested by the user.
+#    - Do not include extra features, comments, or documentation unless explicitly asked.
+#
+# 4. Code Quality:
+#    - Write clean, well-structured, and easily maintainable code.
+#    - Include error handling and validation only when necessary or requested.
+#
+# 5. Modularity:
+#    - Structure code in a modular fashion to facilitate easy integration and testing.
+#
+# 6. Testing:
+#    - Generate tests only if the user specifically requests them.
+#
+# 7. Security:
+#    - Follow best practices for security and ensure that generated code does not expose vulnerabilities.
+#
+# 8. Documentation:
+#    - Include inline comments only when they add value or clarity.
+#    - Do not generate extensive documentation beyond what is asked.
+#
+# 9. Respect for User Request:
+#    - Follow the user's instructions precisely.
+#    - Avoid generating any additional content or features beyond the scope of the request.
+#
+# End of Cursor Rule File
