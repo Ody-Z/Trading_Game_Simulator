@@ -98,9 +98,11 @@ class PokerGame(Game):
         return self.market_maker.get_prices()
 
     def play_round(self) -> Dict[str, Any]:
+        # Reset deck and shuffle
+        self.deck = self._create_deck()
+        self._shuffle_deck()
         # Draw cards
         drawn_cards = [self.deck.pop() for _ in range(self.num_cards)]
-        self._shuffle_deck()  # Reshuffle after drawing
         
         # Calculate sum of card values
         total = sum(self._card_value(card) for card in drawn_cards)
