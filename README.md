@@ -2,18 +2,6 @@
 
 A interactive trading platform that simulates market making across different games of chance, allowing users to place bets and trade positions with varying odds and conditions.
 
-## Project Structure
-market_maker/
-├── main.py              # Entry point and application initialization
-├── games/               # Game implementations
-│   ├── __init__.py
-│   ├── game.py         # Base abstract class for all games
-│   ├── dice.py         # Dice game implementation
-│   ├── poker.py        # Poker game implementation
-│   └── coin.py         # Coin flip game implementation
-├── market_maker.py      # Market making engine and logic
-└── ui.py               # User interface (using Tkinter)
-
 ## Games Description
 
 ### 1. Dice Game
