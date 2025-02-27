@@ -78,16 +78,24 @@ class PokerGame(Game):
 
     def place_market_trade(self, amount: float, is_buy: bool) -> bool:
         """Place a trade with the market maker"""
-        if amount <= 0 or amount > self.player_balance:
+        if amount <= 0:
             return False
             
         # Store the initial price for PnL calculation
         bid, ask = self.market_maker.get_prices()
         initial_price = ask if is_buy else bid
         
+        # Calculate the cost of the trade (amount of shares * price per share)
+        trade_cost = amount * initial_price
+        
+        # Check if player has enough balance for the trade
+        if trade_cost > self.player_balance:
+            return False
+        
         success = self.market_maker.place_trade(amount, is_buy)
         if success:
-            self.player_balance -= amount
+            # Deduct the actual cost (not just the number of shares)
+            self.player_balance -= trade_cost
             # Store amount, direction and initial price
             self.mm_trades.append((amount, is_buy, initial_price))
             return True
@@ -128,14 +136,17 @@ class PokerGame(Game):
         # Process market maker trades
         bid, ask = self.market_maker.update_prices(total)
         for amount, is_buy, initial_price in self.mm_trades:
+            # Calculate original investment
+            original_investment = amount * initial_price
+            
             if is_buy:  # Player bought (bet high)
                 # Calculate PnL based on difference from initial price
                 pnl = amount * (total - initial_price) 
-                self.player_balance += amount + pnl
+                self.player_balance += original_investment + pnl
             else:  # Player sold (bet low)
                 # Calculate PnL based on difference from initial price
                 pnl = amount * (initial_price - total) 
-                self.player_balance += amount + pnl
+                self.player_balance += original_investment + pnl
         
         results = {
             "cards": drawn_cards,
